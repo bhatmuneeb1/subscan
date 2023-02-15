@@ -67,19 +67,16 @@ os.system(f"httpx -l subdomains.txt -o alive_subdomains_httpx.txt")
 # Combine the results from both tools
 os.system("cat alive_subdomains_httprobe.txt alive_subdomains_httpx.txt | sort -u > alive_subdomains.txt")
 
-# Check for subdomain takeover using SubOver
-if os.path.exists("alive_subdomains.txt"):
-    print("\033[32mChecking for subdomain takeover using SubOver...\033[0m")
-    os.system(f"SubOver -l alive_subdomains.txt -t 30 --verbose --dns --port --https --takeover")
 
 
 #Check for subdomain takeover using Subjack
 if os.path.exists("alive_subdomains.txt"):
     print("\033[32mChecking for subdomain takeover using Subjack...\033[0m")
-    os.system(f"subjack -w alive_subdomains.txt -t 100 -timeout 30 -ssl -c ~/go/src/github.com/haccer/subjack/fingerprints.json -v -o subjack_results.txt")
+    os.system(f"subjack -w alive_subdomains.txt -t 100 -timeout 30 -v -o subjack_results.txt")
 
 
 # Check for subdomain takeover using Subzy
 if os.path.exists("alive_subdomains.txt"):
     print("\033[32mChecking for subdomain takeover using Subzy...\033[0m")
-    os.system(f"subzy -targets alive_subdomains.txt -hide_fails -output subzy_results.txt")
+    os.system(f"subzy r --targets alive_subdomains.txt")
+
