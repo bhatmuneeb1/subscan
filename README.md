@@ -17,15 +17,15 @@ By creating this tool, I wanted to provide a quick and efficient way to perform 
 
 1. Clone the Subscan repository to your local machine using the following command:
 
-```git clone https://github.com/yourusername/subscan.git```
+       ```git clone https://github.com/yourusername/subscan.git```
 
 2. Change your current directory to the subscan folder:
 
-```cd subscan```
+       ```cd subscan```
 
 3. Install the required dependencies by running the following command:
 
-```pip install -r requirements.txt```
+       ```pip install -r requirements.txt```
 
 4. You're ready to use Subscan!
 
@@ -35,7 +35,7 @@ By creating this tool, I wanted to provide a quick and efficient way to perform 
 
 2. Run the ```subscan.py``` file using the following command:
 
-```python subscan.py```
+       ```python subscan.py```
 
 3. Follow the on-screen prompts to enter the target domain and initiate the subdomain reconnaissance process.
 
