@@ -17,7 +17,7 @@ By creating this tool, I wanted to provide a quick and efficient way to perform 
 
 1. Clone the Subscan repository to your local machine using the following command:
 
-      ```git clone https://github.com/yourusername/subscan.git```
+       ```git clone https://github.com/yourusername/subscan.git```
 
 2. Change your current directory to the subscan folder:
 
