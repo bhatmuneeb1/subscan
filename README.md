@@ -21,3 +21,24 @@ By creating this tool, I wanted to provide a quick and efficient way to perform 
 ```pip install -r requirements.txt```
 
 4. You're ready to use Subscan!
+
+# Usage
+
+1. Open a terminal and navigate to the Subscan folder.
+
+2. Run the ```subscan.py``` file using the following command:
+
+```python subscan.py```
+
+3. Follow the on-screen prompts to enter the target domain and initiate the subdomain reconnaissance process.
+
+4. After the process is complete, the results will be saved in a new folder with the name [target_domain]_output.
+
+# Issues
+
+If you encounter any issues while using Subscan, please create an issue in the GitHub repository.
+
+# Disclaimer
+
+Please use Subscan responsibly and only on domains that you have permission to scan. Subscan is intended for educational and ethical use only. The developers of Subscan are not responsible for any illegal or unethical use of this tool.
+
