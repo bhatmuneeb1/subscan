@@ -58,7 +58,7 @@ os.system("cat *.txt | sort -u > subdomains.txt")
 
 # Check for alive subdomains using httprobe
 print("\033[32mChecking for alive subdomains using httprobe...\033[0m")
-os.system(f"cat subdomains.txt | httprobe -prefer-https > alive_subdomains_httprobe.txt")
+os.system(f"cat subdomains.txt | httprobe > alive_subdomains_httprobe.txt")
 
 # Check for alive subdomains using httpx
 print("\033[32mChecking for alive subdomains using httpx...\033[0m")
