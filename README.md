@@ -6,6 +6,13 @@ This tool combines the power of multiple subdomain enumeration tools like Sublis
 
 By creating this tool, I wanted to provide a quick and efficient way to perform reconnaissance on a target domain and help fellow security professionals save time and effort. This tool is not only user-friendly but also highly effective in discovering subdomains and potential subdomain takeover vulnerabilities. I hope this tool will be useful to the community.
 
+<img src="subscan1.png" alt="subscan screenshot" width="500" height="300">.    <img src="subscan2.png" alt="subscan screenshot" width="500" height="300">
+
+
+ 
+
+
+
 # Installation
 
 1. Clone the Subscan repository to your local machine using the following command:
