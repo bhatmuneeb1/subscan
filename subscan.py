@@ -40,6 +40,10 @@ os.system(f"sublist3r -d {target_domain} -o sublist3r.txt")
 print("\033[32mEnumerating subdomains using Assetfinder.....\033[0m")
 os.system(f"assetfinder --subs-only {target_domain} > assetfinder.txt")
 
+# Enumerate subdomains using findomain
+print("\033[32mEnumerating subdomains using findomain.....\033[0m")
+os.system(f"findomain -t {target_domain} -u findomain.txt")
+
 # Enumerate subdomains using Subfinder
 print("\033[32mEnumerating subdomains using Subfinder......\033[0m")
 os.system(f"subfinder -d {target_domain} -o subfinder.txt")
