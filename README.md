@@ -41,6 +41,19 @@ By creating this tool, I wanted to provide a quick and efficient way to perform 
 
 4. After the process is complete, the results will be saved in a new folder with the name [target_domain]_output.
 
+# Tools Required 
+
+Sublist3r
+Assetfinder 
+Findomain
+Subfinder
+Amass
+httprobe 
+httpx
+Subjack 
+Subzy 
+
+
 # Issues
 
 If you encounter any issues while using Subscan, please create an issue in the GitHub repository.
