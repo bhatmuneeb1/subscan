@@ -1,64 +1,117 @@
 # Subscan
 
-As an information security professional, the process of manually performing reconnaissance on a target domain to discover subdomains and check for subdomain takeover vulnerabilities can be a time-consuming and tedious task. That's why I decided to create this Subdomain Reconnaissance Tool to automate the process and make it more efficient.
+A small, open-source orchestration CLI for **authorized subdomain reconnaissance**. Subscan coordinates established third-party tools, normalizes their output, and helps security researchers avoid repetitive manual glue work.
 
-This tool combines the power of multiple subdomain enumeration tools like Sublist3r, Assetfinder, Subfinder,Findomain and Amass, which helps in finding a comprehensive list of subdomains. Additionally, the tool checks for live subdomains using both httprobe and httpx, making sure that only the active subdomains are considered for the subdomain takeover check. The tool also checks for subdomain takeover vulnerabilities using three different tools, namely SubOver, Subzy and Subjack, which provides a thorough and reliable assessment of the target domain's security posture.
+> Use Subscan only against systems you own or have explicit permission to test.
 
-By creating this tool, I wanted to provide a quick and efficient way to perform reconnaissance on a target domain and help fellow security professionals save time and effort. This tool is not only user-friendly but also highly effective in discovering subdomains and potential subdomain takeover vulnerabilities. I hope this tool will be useful to the community.
+## Why Subscan?
 
-<img src="Subscan1.png" alt="subscan screenshot" width="400" height="300">.  <img src="subscan2.png" alt="subscan screenshot" width="400" height="300">
+Reconnaissance often means running several tools, collecting overlapping output, checking which hosts are live, and then passing those results into follow-up checks. Subscan turns that workflow into one repeatable command while keeping the underlying tools visible and replaceable.
 
+## Features
 
- 
+- Validates and normalizes target domain names before execution.
+- Invokes external tools without a shell to reduce command-injection risk.
+- Supports Sublist3r, Assetfinder, Findomain, Subfinder, and Amass.
+- Probes discovered hosts with httpx and httprobe when installed.
+- Can run Subjack and Subzy checks against live results.
+- Deduplicates output into simple text files.
+- Detects missing tools and continues with what is available.
+- Includes unit tests and CI for Python 3.10, 3.11, and 3.12.
 
+## Installation
 
+### From source
 
-# Installation
+```bash
+git clone https://github.com/bhatmuneeb1/subscan.git
+cd subscan
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+```
 
-1. Clone the Subscan repository to your local machine using the following command:
+The Python package itself has no runtime dependency on the third-party reconnaissance tools. Install whichever external tools you want Subscan to orchestrate.
 
-      ```git clone https://github.com/yourusername/subscan.git```
+Check what is available:
 
-2. Change your current directory to the subscan folder:
+```bash
+subscan --check-tools
+```
 
-      ```cd subscan```
+## Usage
 
-3. Install the required dependencies by running the following command:
+Run a scan against an authorized domain:
 
-      ```pip install -r requirements.txt```
+```bash
+subscan example.com
+```
 
-4. You're ready to use Subscan!
+Choose an output directory:
 
-# Usage
+```bash
+subscan example.com --output results/example
+```
 
-1. Open a terminal and navigate to the Subscan folder.
+Skip takeover checks:
 
-2. Run the ```subscan.py``` file using the following command:
+```bash
+subscan example.com --skip-takeover
+```
 
-      ```python subscan.py```
+You can also run the module directly:
 
-3. Follow the on-screen prompts to enter the target domain and initiate the subdomain reconnaissance process.
+```bash
+python subscan.py example.com
+```
 
-4. After the process is complete, the results will be saved in a new folder with the name [target_domain]_output.
+## Output
 
-# Tools Required 
+A typical run can create files such as:
 
-Sublist3r
-Assetfinder 
-Findomain
-Subfinder
-Amass
-httprobe 
-httpx
-Subjack 
-Subzy 
+```text
+example.com_output/
+├── sublist3r.txt
+├── assetfinder.txt
+├── findomain.txt
+├── subfinder.txt
+├── amass.txt
+├── subdomains.txt
+├── alive_httpx.txt
+├── alive_httprobe.txt
+├── alive_subdomains.txt
+└── subjack_results.txt
+```
 
+Exact files depend on which third-party tools are installed and return results.
 
-# Issues
+## Development
 
-If you encounter any issues while using Subscan, please create an issue in the GitHub repository.
+```bash
+python -m pip install -e . pytest
+pytest
+```
 
-# Disclaimer
+GitHub Actions runs the test suite on supported Python versions for pushes and pull requests.
 
-Please use Subscan responsibly and only on domains that you have permission to scan. Subscan is intended for educational and ethical use only. The developers of Subscan are not responsible for any illegal or unethical use of this tool.
+## Contributing
 
+Contributions are welcome, especially improvements to reliability, portability, testing, structured output, documentation, and safe authorized-use workflows. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Security
+
+If you find a vulnerability in Subscan itself, please follow [SECURITY.md](SECURITY.md) rather than opening a public issue with exploit details.
+
+## Project status
+
+Subscan is being modernized from its original proof-of-concept script into a maintainable CLI. The current `0.2.x` line focuses on safer process execution, reproducibility, testing, and contributor experience.
+
+See [CHANGELOG.md](CHANGELOG.md) for notable changes.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+## Responsible use
+
+Subscan is intended for security research, defensive assessment, education, and bug-bounty work where the operator has authorization. You are responsible for following applicable laws and each target's testing rules.
