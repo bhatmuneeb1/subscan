@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subscan-cli"
+version = "0.2.0"
+description = "A safe orchestration CLI for authorized subdomain reconnaissance workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Muneeb Amin Bhat" }]
+keywords = ["security", "reconnaissance", "subdomains", "bug-bounty", "pentesting"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+]
+
+[project.urls]
+Homepage = "https://github.com/bhatmuneeb1/subscan"
+Issues = "https://github.com/bhatmuneeb1/subscan/issues"
+
+[project.scripts]
+subscan = "subscan:main"
+
+[tool.setuptools]
+py-modules = ["subscan"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
